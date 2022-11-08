@@ -7,11 +7,14 @@ package com.cute.cutenotes;
 
 import javafx.application.Application;
 import javafx.scene.Cursor;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -24,6 +27,11 @@ public class EyeSea extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Canvas canvas = new Canvas(410,430);
+        Image image = new Image("file:banana.jpg");
+        ImageView imageView = new ImageView(image);
+        Group root = new Group();
+        root.getChildren().addAll(imageView);
+
         VBox vBox = new VBox();
         vBox.setStyle("-fx-background-color: white;");
         vBox.getChildren().add(getBox1(canvas));
@@ -31,6 +39,8 @@ public class EyeSea extends Application {
         //FXMLLoader fxmlLoader = new FXMLLoader(EyeSea.class.getResource("hello-view.fxml"));
         //Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Scene scene = new Scene(vBox, canvas.getWidth()-10,canvas.getHeight()+30);
+        //scene.getStylesheets().addAll(this.getClass().getResource("FrostedGlass.css").toExternalForm());
+
         stage.setTitle("EyeSea");
         stage.setScene(scene);
         //stage.setResizable(false);
